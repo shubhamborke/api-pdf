@@ -5,10 +5,11 @@ const responseFunc = (req, res) => {
     "Content-Type": "application/pdf",
     "Content-Disposition": "attachment:filename=output.pdf",
   });
+  
   writePdfData(
     (chunck) => outStream.write(chunck),
     () => outStream.end(),
-    JSON.stringify(req.body, null, 5)
+    req.body
   );
 };
 
